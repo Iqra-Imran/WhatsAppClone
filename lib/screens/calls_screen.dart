@@ -10,8 +10,18 @@ class CallScreen extends StatefulWidget {
 }
 
 class _CallScreenState extends State<CallScreen> {
-  List arrnames = ['Esha','Awais','Ayesha','Fawad', 'Saira','sahar','yasin','Iqra','Zain'];
-  List arrCallAvatar =[
+  List arrnames = [
+    'Esha',
+    'Awais',
+    'Ayesha',
+    'Fawad',
+    'Saira',
+    'sahar',
+    'yasin',
+    'Iqra',
+    'Zain'
+  ];
+  List arrCallAvatar = [
     AssetImage(AvatarImages.eshaImage),
     AssetImage(AvatarImages.awaisImage),
     AssetImage(AvatarImages.ayeshaImage),
@@ -27,6 +37,7 @@ class _CallScreenState extends State<CallScreen> {
     AssetImage(AvatarImages.iqraImage),
     AssetImage(AvatarImages.zainImage),
   ];
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -35,32 +46,51 @@ class _CallScreenState extends State<CallScreen> {
           children: [
             Padding(
               padding: const EdgeInsets.all(10.0),
-              child: CircleAvatar(backgroundColor: AppColors.whatsappColor),
+              child: CircleAvatar(
+                radius: 22,
+                backgroundColor: AppColors.whatsappColor,
+                child: Icon(Icons.link),
+              ),
             ),
-            Text('Create call link',style: TextStyle(fontWeight: FontWeight.bold),)
+            Text(
+              'Create call link',
+              style: TextStyle(fontWeight: FontWeight.bold,fontSize: 16),
+            )
           ],
         ),
         Divider(),
         Container(
-          alignment: Alignment.topLeft,
+            alignment: Alignment.topLeft,
             child: Padding(
               padding: const EdgeInsets.all(10.0),
-              child: Text('Recent',style: TextStyle(fontWeight: FontWeight.bold),textAlign: TextAlign.left,),
+              child: Text(
+                'Recent',
+                style: TextStyle(fontWeight: FontWeight.bold,fontSize: 16),
+                textAlign: TextAlign.left,
+              ),
             )),
         Flexible(
           child: ListView.builder(
-            itemCount: arrnames.length,
-              itemBuilder: (context,index) {
+              itemCount: arrnames.length,
+              itemBuilder: (context, index) {
                 return ListTile(
-                  leading: CircleAvatar(backgroundImage: arrCallAvatar[index],),
+                  leading: CircleAvatar(
+                    backgroundImage: arrCallAvatar[index],
+                  ),
                   title: Text(arrnames[index]),
-                  subtitle: Row(children: [Icon(Icons.call_missed),Text('june 11,10:30 PM')],),
-                  trailing: Icon(Icons.call,color: Colors.green,),
+                  subtitle: Row(
+                    children: [
+                      Icon(Icons.call_missed),
+                      Text('june 11,10:30 PM')
+                    ],
+                  ),
+                  trailing: Icon(
+                    Icons.call,
+                    color: Colors.green,
+                  ),
                 );
-              }
-          ),
+              }),
         ),
-
       ],
     );
   }
